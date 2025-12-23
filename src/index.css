@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  --color-brand-900: #1a1a1a;
+  --color-brand-800: #2d2d2d;
+  --color-brand-100: #f3f4f6;
+
+  --color-gold-400: #d4af37;
+  --color-gold-500: #c5a059;
+  --color-gold-600: #b8860b;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    cursor: default;
+    /* Standard cursor */
+  }
+}
+
+/* Luxury B&W to Color Transition */
+.bw-transition {
+  filter: grayscale(100%);
+  transition: filter 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 1s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.group:hover .bw-transition,
+.bw-transition:hover {
+  filter: grayscale(0%);
+}
+
+/* Hexagon Clip Path */
+.clip-hexagon {
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+
+/* Typography Text Strokes */
+.text-stroke-light {
+  -webkit-text-stroke: 1px rgba(0, 0, 0, 0.05);
+  color: transparent;
+}
+
+.text-stroke-white {
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.1);
+  color: transparent;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c5a059;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #b8860b;
+}
+
+input,
+select,
+textarea {
+  border-radius: 0;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+/* CTA Button Standardization */
+.cta-button {
+  @apply bg-gold-500 text-white px-8 py-4 font-bold uppercase text-[10px] tracking-[0.2em] rounded-sm transition-all duration-300 shadow-lg flex items-center justify-center gap-2;
+}
+
+.cta-button:hover:not(:disabled) {
+  @apply bg-gold-600 scale-[1.05] shadow-xl;
+}
+
+.cta-button:active:not(:disabled) {
+  @apply scale-[0.98];
+}
+
+.cta-button:disabled {
+  @apply opacity-70 cursor-wait;
+}
+
+/* Form Success/Error Transitions */
+.animate-form-status {
+  animation: formStatus 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes formStatus {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

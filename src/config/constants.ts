@@ -4,7 +4,7 @@ import { Project } from '@/types';
 // BRAND IDENTITY
 // ==========================================
 export const BRAND = {
-  name: "Lumina Estates",
+  name: "SAQ Associates",
   tagline: "Elevating Horizons, Crafting Legacies",
   founded: 1985,
   stats: {
@@ -15,8 +15,8 @@ export const BRAND = {
   },
   contact: {
     phone: "+91 22 4000 5000",
-    email: "concierge@luminaestates.com",
-    address: "Lumina House, The Capital, BKC, Mumbai - 400051"
+    email: "concierge@saqassociates.com",
+    address: "SAQ House, The Capital, BKC, Mumbai - 400051"
   }
 };
 
@@ -39,7 +39,7 @@ export const PROJECTS_DATA: Project[] = [
   },
   {
     id: '2',
-    title: 'Lumina Zenith',
+    title: 'SAQ Zenith',
     location: 'Worli',
     type: 'Residential',
     status: 'Ongoing',
@@ -63,7 +63,7 @@ export const PROJECTS_DATA: Project[] = [
   },
   {
     id: '4',
-    title: 'Lumina Nexus',
+    title: 'SAQ Nexus',
     location: 'BKC',
     type: 'Commercial',
     status: 'Ongoing',
@@ -103,7 +103,7 @@ export const PROJECTS_DATA: Project[] = [
   // COMPLETED
   {
     id: '7',
-    title: 'Lumina Solitaire',
+    title: 'SAQ Solitaire',
     location: 'Andheri West',
     type: 'Residential',
     status: 'Completed',
@@ -127,7 +127,7 @@ export const PROJECTS_DATA: Project[] = [
   },
   {
     id: '9',
-    title: 'Lumina Pristine',
+    title: 'SAQ Pristine',
     location: 'Goregaon',
     type: 'Residential',
     status: 'Completed',
@@ -187,7 +187,7 @@ export const BLOGS_DATA = [
 export const TESTIMONIALS_DATA = [
   {
     name: "The Oberoi Family",
-    project: "Lumina Zenith",
+    project: "SAQ Zenith",
     image: "https://images.unsplash.com/photo-1542596594-649edbc13630?auto=format&fit=crop&q=80&w=800" // Happy couple/family
   },
   {
@@ -197,7 +197,7 @@ export const TESTIMONIALS_DATA = [
   },
   {
     name: "Mr. Rajesh Singhania",
-    project: "Lumina Solitaire",
+    project: "SAQ Solitaire",
     image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=800" // Business man
   }
 ];
@@ -219,7 +219,7 @@ export const TEAM_DATA = [
 // ==========================================
 export const CAREERS_DATA = [
   { title: "RELATIONSHIP MANAGER", exp: "4 to 6 years", loc: "Sales Gallery, Worli", type: "Full Time", department: "Sales" },
-  { title: "SENIOR ARCHITECT", exp: "Min 7-10 Years", loc: "Lumina House, BKC", type: "Full Time", department: "Architecture" },
+  { title: "SENIOR ARCHITECT", exp: "Min 7-10 Years", loc: "SAQ House, BKC", type: "Full Time", department: "Architecture" },
   { title: "SITE ENGINEER", exp: "Min 4-7 Years", loc: "Project Aeon, Juhu", type: "Full Time", department: "Engineering" }
 ];
 
@@ -227,12 +227,42 @@ export const CAREERS_DATA = [
 // NEWS / MEDIA (CMS SCHEMA: 'newsItem')
 // ==========================================
 export const NEWS_DATA = [
-  { title: "Best Redevelopment Project - The Obsidian (Real Estate & Business Excellence Awards 2024)", img: "https://images.unsplash.com/photo-1567427018141-0584cfcbf1b8?auto=format&fit=crop&q=80&w=600" }, // Award ceremony / Stage
-  { title: "Lumina Estates Featured in Architectural Digest - 'The Future of Living'", img: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&q=80&w=600" }, // Architecture magazine style
-  { title: "Lumina Zenith Sample Flat Unveiling - August 2025", img: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=600" }, // Interior party/unveiling
-  { title: "Developer of the Year - Luxury (Global Real Estate Awards 2024)", img: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&q=80&w=600" }, // Handshake/Award
-  { title: "Best Quality & Architectural Design - Aurora Heights", img: "https://images.unsplash.com/photo-1479839672679-a46483c0e7c8?auto=format&fit=crop&q=80&w=600" }, // Building detail
-  { title: "Lumina Sports Cup 2024 @ Orbital Tech Park", img: "https://images.unsplash.com/photo-1526676037777-05a232554f77?auto=format&fit=crop&q=80&w=600" }, // Sports/Turf
+  {
+    title: "Best Redevelopment Project - The Obsidian",
+    source: "Real Estate Excellence Awards",
+    date: "Jan 2024",
+    img: "https://images.unsplash.com/photo-1567427018141-0584cfcbf1b8?auto=format&fit=crop&q=80&w=600"
+  }, // Award ceremony / Stage
+  {
+    title: "SAQ Associates Featured in Architectural Digest - 'The Future of Living'",
+    source: "Architectural Digest",
+    date: "Dec 2024",
+    img: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&q=80&w=600"
+  }, // Architecture magazine style
+  {
+    title: "Developer of the Year - Luxury Segment",
+    source: "Global Real Estate Awards",
+    date: "Nov 2024",
+    img: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&q=80&w=600"
+  }, // Handshake/Award
+  {
+    title: "Best Quality & Architectural Design - Aurora Heights",
+    source: "Design & Build Awards",
+    date: "Oct 2024",
+    img: "https://images.unsplash.com/photo-1479839672679-a46483c0e7c8?auto=format&fit=crop&q=80&w=600"
+  }, // Building detail
+  {
+    title: "SAQ Zenith Sample Flat Unveiling",
+    source: "Press Release",
+    date: "Aug 2025",
+    img: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=600"
+  }, // Interior party/unveiling
+  {
+    title: "SAQ Sports Cup 2024 @ Orbital Tech Park",
+    source: "Community Events",
+    date: "Feb 2024",
+    img: "https://images.unsplash.com/photo-1526676037777-05a232554f77?auto=format&fit=crop&q=80&w=600"
+  }, // Sports/Turf
 ];
 
 // ==========================================
@@ -240,12 +270,12 @@ export const NEWS_DATA = [
 // ==========================================
 export const VERTICALS_DATA = [
   {
-    title: "LUMINA INTERIORS",
+    title: "SAQ INTERIORS",
     description: "Curating bespoke living spaces with Italian marble, German fittings, and automation systems that anticipate your needs. Our interior division ensures the inside is as spectacular as the facade.",
     img: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=800", // Luxurious Interior
   },
   {
-    title: "LUMINA COMMERCIAL",
+    title: "SAQ COMMERCIAL",
     description: "Creating Grade-A workspaces that inspire productivity. From ergonomic designs to LEED Gold certified sustainability, we build offices for the future of work.",
     img: "https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=800", // Modern Office
   }

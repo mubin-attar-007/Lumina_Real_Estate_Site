@@ -1,12 +1,12 @@
 import React from 'react';
 import { ArrowRight, MapPin } from 'lucide-react';
-import { BRAND, CAREERS_DATA } from '@/config/constants';
+import { CAREERS_DATA } from '@/config/constants';
 import SEO from '@/components/common/SEO';
 
 const Careers: React.FC = () => {
     return (
         <div className="min-h-screen bg-white">
-            <SEO title="Careers at Lumina" description="Join the team building Mumbai's future landmarks. Explore opportunities at Lumina Estates." />
+            <SEO title="Careers at SAQ" description="Join the team building Mumbai's future landmarks. Explore opportunities at SAQ Associates." />
 
             {/* 1. HERO SECTION - Cinematic Fullscreen */}
             <section className="relative h-[60vh] w-full overflow-hidden">
@@ -80,8 +80,8 @@ const Careers: React.FC = () => {
 
                     <div className="text-center mt-20">
                         <p className="text-gray-500 mb-4">Don't see your role?</p>
-                        <a href={`mailto:careers@luminaestates.com`} className="text-xl font-serif text-brand-900 border-b border-brand-900 pb-1 hover:text-gold-600 hover:border-gold-600 transition-all">
-                            Send your resume to careers@luminaestates.com
+                        <a href={`mailto:careers@saqassociates.com`} className="text-xl font-serif text-brand-900 border-b border-brand-900 pb-1 hover:text-gold-600 hover:border-gold-600 transition-all">
+                            Send your resume to careers@saqassociates.com
                         </a>
                     </div>
                 </div>

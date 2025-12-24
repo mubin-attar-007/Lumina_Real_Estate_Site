@@ -1,8 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowUpRight, MapPin, Maximize, Bed } from 'lucide-react';
 import { Project } from '@/types';
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 interface ProjectCardProps {
   project: Project;

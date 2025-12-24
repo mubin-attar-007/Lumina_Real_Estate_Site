@@ -3,29 +3,29 @@ import { VERTICALS_DATA } from '@/config/constants';
 
 const VerticalsSection: React.FC = () => {
     return (
-        <section className="py-32 bg-white">
+        <section className="py-32 bg-brand-900 relative">
             <div className="container mx-auto px-6">
                 <div className="mb-20 text-center">
                     <span className="text-gold-500 font-bold uppercase tracking-luxury text-[10px] mb-4 block">VERTICALS</span>
-                    <h2 className="text-4xl font-serif font-bold text-brand-900">Beyond Real Estate</h2>
+                    <h2 className="text-4xl font-serif font-bold text-white">Beyond Real Estate</h2>
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-0 border border-gray-200 shadow-2xl">
+                <div className="grid md:grid-cols-2 gap-0 border border-gold-500/20 shadow-2xl">
                     {VERTICALS_DATA.map((biz, index) => (
-                        <div key={index} className="bg-white p-12 md:p-16 group relative overflow-hidden border-b md:border-b-0 md:border-r border-gray-200 last:border-r-0 min-h-[400px]">
+                        <div key={index} className="bg-brand-950/50 p-12 md:p-16 group relative overflow-hidden boundary-row border-b md:border-b-0 md:border-r border-gold-500/10 min-h-[400px]">
                             {/* Background Image - Strikingly Visible */}
-                            <div className="absolute inset-0 z-0 opacity-60 group-hover:opacity-100 transition-opacity duration-700">
+                            <div className="absolute inset-0 z-0 opacity-90 group-hover:opacity-100 transition-opacity duration-700">
                                 <img src={biz.img} className="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-700" alt={biz.title} />
                             </div>
 
-                            {/* Gradient Overlay - Softened to allow background to pop */}
-                            <div className="absolute inset-0 z-[1] bg-gradient-to-br from-white/80 via-white/70 to-white/60 group-hover:from-white/70 group-hover:via-white/60 group-hover:to-white/50 transition-all duration-700"></div>
+                            {/* Gradient Overlay - Reduced for better visibility */}
+                            <div className="absolute inset-0 z-[1] bg-gradient-to-br from-brand-900/80 via-brand-900/40 to-transparent group-hover:from-brand-900/70 group-hover:via-brand-900/30 group-hover:to-transparent transition-all duration-700"></div>
 
                             {/* Content */}
                             <div className="relative z-10">
-                                <h3 className="text-2xl font-serif font-bold text-brand-900 mb-6 group-hover:text-gold-600 transition-colors">{biz.title}</h3>
-                                <p className="text-gray-600 leading-relaxed text-sm mb-8 font-light">{biz.description}</p>
-                                <button className="text-xs font-bold uppercase tracking-widest text-brand-900 border-b-2 border-brand-900 pb-1 hover:text-gold-500 hover:border-gold-500 transition-colors duration-300">Know More</button>
+                                <h3 className="text-2xl font-serif font-bold text-white mb-6 group-hover:text-gold-500 transition-colors">{biz.title}</h3>
+                                <p className="text-gray-300 leading-relaxed text-sm mb-8 font-light">{biz.description}</p>
+                                <button className="text-xs font-bold uppercase tracking-widest text-white border-b-2 border-white/30 pb-1 hover:text-gold-500 hover:border-gold-500 transition-colors duration-300">Know More</button>
                             </div>
                         </div>
                     ))}

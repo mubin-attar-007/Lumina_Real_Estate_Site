@@ -87,7 +87,7 @@ const ChatWidget: React.FC = () => {
                   <Sparkles size={18} className="text-gold-500" />
                 </div>
                 <div>
-                  <h3 className="font-serif font-bold text-white text-base tracking-wide">Lumina Concierge</h3>
+                  <h3 className="font-serif font-bold text-white text-base tracking-wide">SAQ Concierge</h3>
                   <p className="text-[10px] text-gold-500 uppercase tracking-widest flex items-center gap-1">
                     <span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></span> Online
                   </p>

@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { BRAND } from '@/config/constants';
 import SEO from '@/components/common/SEO';
-import { Shield, Lock, FileText, AlertCircle } from 'lucide-react';
+import { AlertCircle } from 'lucide-react';
 
 const Legal: React.FC = () => {
    const [activeTab, setActiveTab] = useState<'privacy' | 'terms' | 'rera'>('privacy');
 
    return (
       <div className="min-h-screen bg-white">
-         <SEO title="Legal & Compliance" description="Privacy Policy, Terms of Use, and RERA Disclaimer for Lumina Estates." />
+         <SEO title="Legal & Compliance" description="Privacy Policy, Terms of Use, and RERA Disclaimer for SAQ Associates." />
 
          {/* 1. MINIMAL HEADER (Text Only) */}
          <section className="pt-32 pb-16 px-6 md:px-20 border-b border-gray-100">
@@ -95,7 +95,7 @@ const Legal: React.FC = () => {
 
                            <div className="prose prose-sm text-gray-500 max-w-none space-y-4">
                               <p>The imagery used on the website is indicative of artist's impressions. Furniture, accessories, and interior fixtures shown in show residences are not part of standard offerings unless explicitly stated.</p>
-                              <p>We invite you to verify all details, including approvals and plans, at our corporate office or the official <a href="https://maharera.mahaonline.gov.in/" target="_blank" rel="noreferrer" className="text-brand-900 underline hover:text-gold-600">MahaRERA Website</a>.</p>
+                              <p>We invite you to verify all details, including approvals and plans, at our corporate office or the official <a href="https://maharera.mahaonline.gov.in/" target="_blank" rel="noopener noreferrer" className="text-brand-900 underline hover:text-gold-600">MahaRERA Website</a>.</p>
                            </div>
                         </div>
                      )}

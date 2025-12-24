@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { MapPin, Phone, Mail, Clock, ArrowRight } from 'lucide-react';
+// import { Link } from 'react-router-dom';
+import { Phone, Mail, Clock, ArrowRight } from 'lucide-react';
 import { BRAND } from '@/config/constants';
 import SEO from '@/components/common/SEO';
 
@@ -70,7 +70,7 @@ const FormLogic: React.FC = () => {
 const Contact: React.FC = () => {
     return (
         <div className="min-h-screen bg-white">
-            <SEO title="Contact" description="Get in touch with Lumina Estates. Visit our corporate office or schedule a site visit." />
+            <SEO title="Contact" description="Get in touch with SAQ Associates. Visit our corporate office or schedule a site visit." />
 
             {/* 1. HERO SECTION - Cinematic Fullscreen */}
             <section className="relative h-[70vh] w-full overflow-hidden">

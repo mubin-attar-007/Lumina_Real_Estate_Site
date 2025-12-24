@@ -7,7 +7,7 @@ const CSR: React.FC = () => {
         <div className="min-h-screen bg-white">
             <SEO
                 title="Social Responsibility"
-                description="Lumina Cares. Our commitment to sustainable development, education, and community welfare."
+                description="SAQ Cares. Our commitment to sustainable development, education, and community welfare."
             />
 
             {/* 1. HERO SECTION */}
@@ -22,7 +22,7 @@ const CSR: React.FC = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent">
                     <div className="absolute bottom-0 left-0 w-full p-8 md:p-20 flex flex-col items-start justify-end h-full animate-fade-in-up">
                         <span className="text-white/80 text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] mb-4 block">
-                            Lumina Cares
+                            SAQ Cares
                         </span>
                         <h1 className="text-5xl md:text-7xl font-serif text-white mb-6 leading-tight">
                             Building Beyond <br /> Structures.
@@ -39,7 +39,7 @@ const CSR: React.FC = () => {
                         "True legacy isn't just about the skylines we shape, but the lives we touch along the way."
                     </h2>
                     <p className="text-gray-600 text-lg">
-                        At Lumina Estates, Corporate Social Responsibility (CSR) is deeply ingrained in our ethos. We believe in sustainable growth that empowers communities and protects our planet.
+                        At SAQ Associates, Corporate Social Responsibility (CSR) is deeply ingrained in our ethos. We believe in sustainable growth that empowers communities and protects our planet.
                     </p>
                 </div>
             </section>

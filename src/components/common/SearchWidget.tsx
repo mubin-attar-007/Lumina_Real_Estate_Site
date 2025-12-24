@@ -1,5 +1,5 @@
 import React from 'react';
-import { ChevronDown, Search } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
 import { ProjectFilters } from '@/types';
 
 interface SearchWidgetProps {

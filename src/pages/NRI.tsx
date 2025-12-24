@@ -38,7 +38,7 @@ const NRI: React.FC = () => {
                     <div className="text-center max-w-3xl mx-auto mb-20">
                         <h2 className="text-4xl font-serif text-brand-900 mb-6">Seamless Investment from Abroad</h2>
                         <p className="text-gray-600 text-lg leading-relaxed">
-                            We understand the complexities of investing from overseas. Lumina Estates offers a dedicated NRI desk to handle legalities, tax advisory, and property management, ensuring your investment works for you while you are away.
+                            We understand the complexities of investing from overseas. SAQ Associates offers a dedicated NRI desk to handle legalities, tax advisory, and property management, ensuring your investment works for you while you are away.
                         </p>
                     </div>
 

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { PROJECTS_DATA } from '@/config/constants';
 import SEO from '@/components/common/SEO';
-import { ArrowLeft, MapPin, Check, ExternalLink, ArrowRight } from 'lucide-react';
+import { ArrowLeft, MapPin, ArrowRight } from 'lucide-react';
 
 const ProjectDetails: React.FC = () => {
     const { id } = useParams<{ id: string }>();

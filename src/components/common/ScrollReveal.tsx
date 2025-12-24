@@ -8,7 +8,7 @@ interface ScrollRevealProps {
     duration?: number;
     threshold?: number;
     className?: string;
-    animation?: "fade-up" | "fade-right" | "fade-left" | "zoom-in" | "none";
+    animation?: "fade-up" | "fade-down" | "fade-right" | "fade-left" | "zoom-in" | "none";
 }
 
 const ScrollReveal: React.FC<ScrollRevealProps> = ({
@@ -35,6 +35,11 @@ const ScrollReveal: React.FC<ScrollRevealProps> = ({
             case "fade-up":
                 return {
                     hidden: { opacity: 0, y: 30 }, // Subtle 30px shift
+                    visible: { opacity: 1, y: 0 }
+                };
+            case "fade-down":
+                return {
+                    hidden: { opacity: 0, y: -30 },
                     visible: { opacity: 1, y: 0 }
                 };
             case "fade-right":

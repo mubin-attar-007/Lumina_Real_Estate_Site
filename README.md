@@ -1,13 +1,13 @@
-# Lumina Estates - Ultra-Luxury Real Estate Platform
+# SAQ Associates - Ultra-Luxury Real Estate Platform
 
-![Lumina Estates](https://images.unsplash.com/photo-1600607686527-6fb886090705?auto=format&fit=crop&q=80&w=1200&h=400)
+![SAQ Associates](https://images.unsplash.com/photo-1600607686527-6fb886090705?auto=format&fit=crop&q=80&w=1200&h=400)
 
-Lumina Estates is a premier digital experience for ultra-luxury real estate, designed to showcase high-end properties with a sophisticated, immersive interface.
+SAQ Associates is a premier digital experience for ultra-luxury real estate, designed to showcase high-end properties with a sophisticated, immersive interface.
 
 ## 🌟 Key Features
 
 -   **Immersive Design**: Built with a "luxury-first" aesthetic using dark modes, gold accents, and fluid animations (Framer Motion).
--   **AI Concierge**: Integrated "Lumina" chatbot powered by **Google Gemini AI** (Serverless/Edge compatible) for 24/7 client assistance.
+-   **AI Concierge**: Integrated "SAQ" chatbot powered by **Google Gemini AI** (Serverless/Edge compatible) for 24/7 client assistance.
 -   **Responsive & Interactive**: Fully responsive mobile menu, smooth scrolling (Lenis), and interactive property grids.
 -   **Performance Optimized**: Lazy loading, optimized assets, and best-practice React architecture.
 
@@ -31,8 +31,8 @@ Lumina Estates is a premier digital experience for ultra-luxury real estate, des
 
 1.  **Clone the repository**
     ```bash
-    git clone https://github.com/your-username/lumina-estates.git
-    cd lumina-estates
+    git clone https://github.com/your-username/saq-estates.git
+    cd saq-estates
     ```
 
 2.  **Install dependencies**

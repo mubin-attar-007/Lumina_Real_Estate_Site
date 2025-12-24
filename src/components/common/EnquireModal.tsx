@@ -34,7 +34,7 @@ const EnquireModal: React.FC<EnquireModalProps> = ({ isOpen, onClose }) => {
                             />
                             <div className="absolute inset-0 bg-black/20"></div>
                             <div className="absolute bottom-8 left-8 text-white">
-                                <h3 className="text-2xl font-serif font-bold mb-2">Lumina Estates</h3>
+                                <h3 className="text-2xl font-serif font-bold mb-2">SAQ Associates</h3>
                                 <p className="text-sm opacity-80">Experience the extraordinary.</p>
                             </div>
                         </div>

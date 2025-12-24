@@ -9,7 +9,7 @@ const FeaturedResidences: React.FC = () => {
     const featuredProjects = PROJECTS_DATA.slice(0, 4);
 
     return (
-        <section className="bg-white py-24 md:py-40">
+        <section className="bg-gray-50 py-24 md:py-40">
             <div className="container mx-auto px-6 md:px-12">
 
                 {/* Header */}

@@ -4,7 +4,7 @@ import ScrollReveal from '@/components/common/ScrollReveal';
 
 const ManifestoSection: React.FC = () => {
     return (
-        <section className="bg-white py-24 md:py-40">
+        <section className="bg-gray-50 py-24 md:py-40">
             <div className="container mx-auto px-6 md:px-12">
                 <div className="flex flex-col md:flex-row gap-16 md:gap-24 items-center">
 
@@ -31,7 +31,7 @@ const ManifestoSection: React.FC = () => {
                             </h2>
                             <div className="space-y-8 text-lg font-light text-gray-600 leading-relaxed max-w-xl">
                                 <p>
-                                    Lumina Estates is not just a name; it is a promise of permanence. For over three decades, we have been the silent architects behind the city's most iconic skylines, mastering the balance between structural integrity and aesthetic perfection.
+                                    SAQ Associates is not just a name; it is a promise of permanence. For over three decades, we have been the silent architects behind the city's most iconic skylines, mastering the balance between structural integrity and aesthetic perfection.
                                 </p>
                                 <p>
                                     We don't just develop properties; we engineer ecosystems. From the foundation to the final finish, every project is a testament to our relentless pursuit of construction excellence and innovation.

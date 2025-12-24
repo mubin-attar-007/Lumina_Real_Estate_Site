@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, CheckCircle, Building2, Users, TrendingUp } from 'lucide-react';
+import { ArrowRight, Building2, Users, TrendingUp } from 'lucide-react';
 import SEO from '@/components/common/SEO';
 
 const ChannelPartner: React.FC = () => {
@@ -7,7 +7,7 @@ const ChannelPartner: React.FC = () => {
         <div className="min-h-screen bg-white">
             <SEO
                 title="Channel Partners"
-                description="Partner with Lumina Estates. Join our elite circle of channel partners and grow with Mumbai's premier real estate developer."
+                description="Partner with SAQ Associates. Join our elite circle of channel partners and grow with Mumbai's premier real estate developer."
             />
 
             {/* 1. HERO SECTION */}
@@ -42,7 +42,7 @@ const ChannelPartner: React.FC = () => {
                                 Join the <span className="text-gold-600">Elite Circle</span>
                             </h2>
                             <p className="text-gray-600 leading-relaxed text-lg mb-12">
-                                As a Lumina Channel Partner, you gain access to exclusive inventory, priority launches, and a relationship management team dedicated to your success.
+                                As a SAQ Channel Partner, you gain access to exclusive inventory, priority launches, and a relationship management team dedicated to your success.
                             </p>
 
                             <div className="grid grid-cols-1 gap-8">
@@ -79,7 +79,7 @@ const ChannelPartner: React.FC = () => {
                                         </div>
                                         <div className="space-y-2">
                                             <label className="text-xs font-bold uppercase tracking-wider text-gray-400">Agency Name</label>
-                                            <input type="text" className="w-full bg-white border-b border-gray-200 p-3 focus:border-gold-500 focus:outline-none transition-colors" placeholder="Lumina Realtors" />
+                                            <input type="text" className="w-full bg-white border-b border-gray-200 p-3 focus:border-gold-500 focus:outline-none transition-colors" placeholder="SAQ Realtors" />
                                         </div>
                                     </div>
 

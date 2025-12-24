@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { Share2, ZoomIn, ArrowUpRight } from 'lucide-react';
 import { NEWS_DATA } from '@/config/constants';
 import SEO from '@/components/common/SEO';
@@ -7,7 +7,7 @@ import SEO from '@/components/common/SEO';
 const Media: React.FC = () => {
     return (
         <div className="min-h-screen bg-white">
-            <SEO title="Press & Media" description="Latest news, press releases, and updates from Lumina Estates." />
+            <SEO title="Press & Media" description="Latest news, press releases, and updates from SAQ Associates." />
 
             {/* 1. HERO SECTION - Cinematic Fullscreen */}
             <section className="relative h-[60vh] w-full overflow-hidden">
@@ -24,7 +24,7 @@ const Media: React.FC = () => {
                             Press Room
                         </span>
                         <h1 className="text-5xl md:text-8xl font-serif text-white mb-6 leading-tight">
-                            Lumina <br /> In The News.
+                            SAQ <br /> In The News.
                         </h1>
                     </div>
                 </div>
@@ -96,10 +96,13 @@ const Media: React.FC = () => {
                                 <div className="overflow-hidden relative h-72 mb-6 bg-gray-200">
                                     <img src={item.img} alt={item.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 grayscale group-hover:grayscale-0" />
                                     <div className="absolute top-4 left-4 bg-white px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-brand-900">
-                                        News
+                                        {item.date}
                                     </div>
                                 </div>
                                 <div className="pr-4">
+                                    <div className="text-[10px] font-bold uppercase tracking-widest text-gold-600 mb-2">
+                                        {item.source}
+                                    </div>
                                     <h3 className="text-xl font-serif text-brand-900 leading-snug group-hover:text-gold-600 transition-colors mb-4 line-clamp-2">
                                         {item.title}
                                     </h3>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { Link, useLocation } from 'react-router-dom';
-import { Instagram, Linkedin, Twitter, Facebook, X } from 'lucide-react';
+import { Instagram, Linkedin, X } from 'lucide-react';
 import { useModal } from '@/context/ModalContext';
 import { AnimatePresence, motion, useScroll, useSpring } from 'framer-motion';
 import PremiumButton from '@/components/common/PremiumButton';
@@ -22,6 +23,7 @@ const Navbar: React.FC = () => {
     { label: 'Legacy', path: '/about' },
     { label: 'Projects', path: '/projects' },
     { label: 'Redevelopment', path: '/redevelop' },
+    { label: 'Channel Partners', path: '/channel-partners' },
     { label: 'Press', path: '/media' },
   ];
 
@@ -69,13 +71,13 @@ const Navbar: React.FC = () => {
   const isDarkText = scrolled || isOpen;
 
   // Background logic
-  const navClasses = `fixed top-0 left-0 w-full z-[100] transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${scrolled && !isOpen
+  const navClasses = `fixed top-0 left-0 w-full z-[100] transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${scrolled
     ? 'bg-white/95 backdrop-blur-xl shadow-sm py-4'
     : 'bg-transparent py-6 md:py-8'
     }`;
 
-  const textColorClass = isOpen ? 'text-brand-900' : (scrolled ? 'text-brand-900' : 'text-white');
-  const logoTextClass = isOpen ? 'text-brand-900' : (scrolled ? 'text-brand-900' : 'text-white');
+  const textColorClass = isDarkText ? 'text-brand-900' : 'text-white';
+  const logoTextClass = isDarkText ? 'text-brand-900' : 'text-white';
 
   return (
     <>
@@ -93,8 +95,8 @@ const Navbar: React.FC = () => {
             <div className="w-3/12 md:w-3/12 flex justify-start items-center z-[102] relative">
               <Link to="/" className="flex items-center gap-2 group cursor-pointer" onClick={() => setIsOpen(false)}>
                 <div className="flex flex-col items-start">
-                  <span className={`text-xl md:text-2xl font-serif font-bold tracking-tight leading-none ${logoTextClass} transition-colors duration-300`}>LUMINA</span>
-                  <span className={`text-[8px] md:text-[10px] uppercase tracking-[0.35em] font-medium ml-0.5 ${logoTextClass} opacity-80 transition-colors duration-300`}>ESTATES</span>
+                  <span className={`text-xl md:text-2xl font-serif font-bold tracking-tight leading-none ${logoTextClass} transition-colors duration-300`}>SAQ</span>
+                  <span className={`text-[8px] md:text-[10px] uppercase tracking-[0.35em] font-medium ml-0.5 ${logoTextClass} opacity-80 transition-colors duration-300`}>ASSOCIATES</span>
                 </div>
               </Link>
             </div>
@@ -137,7 +139,11 @@ const Navbar: React.FC = () => {
           </div>
         </div>
 
-        {/* FULL SCREEN MENU (100% Width) */}
+      </nav>
+
+      {/* FULL SCREEN MENU (100% Width) - Moved outside nav to escape stacking context */}
+      {/* FULL SCREEN MENU (100% Width) - Moved outside nav to escape stacking context */}
+      {createPortal(
         <AnimatePresence>
           {isOpen && (
             <motion.div
@@ -145,7 +151,7 @@ const Navbar: React.FC = () => {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "tween", ease: [0.22, 1, 0.36, 1], duration: 0.6 }}
-              className="fixed inset-0 z-[200] bg-white flex overflow-hidden"
+              className="fixed inset-0 z-[999] bg-white flex overflow-hidden"
             >
               {/* LEFT COLUMN: 70% Width - CEO / Founder Image (Builder Context) */}
               <div className="hidden lg:block w-[70%] h-full relative overflow-hidden bg-gray-100">
@@ -225,9 +231,9 @@ const Navbar: React.FC = () => {
               </div>
             </motion.div>
           )}
-        </AnimatePresence>
-
-      </nav>
+        </AnimatePresence>,
+        document.body
+      )}
     </>
   );
 };

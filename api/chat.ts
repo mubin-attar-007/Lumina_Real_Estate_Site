@@ -40,11 +40,11 @@ export default async function handler(req: any, res: any) {
         // For this architectural implementation, we do a single-turn generation 
         // or assume the System Instruction is prepended.
 
-        // Simulating the 'Lumina' system context directly here for statelessness
+        // Simulating the 'SAQ' system context directly here for statelessness
         // Correct usage for @google/genai v0.1.0+
         const response = await ai.models.generateContent({
             model: 'gemini-flash-latest',
-            contents: [{ role: 'user', parts: [{ text: `You are Lumina, an AI concierge for Lumina Estates. Answer professionally. User: ${message}` }] }]
+            contents: [{ role: 'user', parts: [{ text: `You are SAQ, an AI concierge for SAQ Associates. Answer professionally. User: ${message}` }] }]
         });
 
         const reply = response.candidates?.[0]?.content?.parts?.[0]?.text || "I apologize, I couldn't process that request.";

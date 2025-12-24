@@ -84,7 +84,7 @@ const Hero: React.FC = () => {
                     className="hidden md:block max-w-lg text-sm md:text-base font-light text-white/80 leading-relaxed border-l border-white/20 pl-6 drop-shadow-md"
                 >
                     <p>
-                        Lumina Estates engineers the world's most prestigious residential and commercial properties, redefining the standard of luxury living.
+                        SAQ Associates engineers the world's most prestigious residential and commercial properties, redefining the standard of luxury living.
                     </p>
                 </motion.div>
 

@@ -83,7 +83,7 @@ const Projects: React.FC = () => {
         <div className="min-h-screen bg-white">
             <SEO
                 title="Luxury Properties Collection"
-                description="Explore our portfolio of premium residential and commercial projects across Mumbai. Find your dream home with Lumina."
+                description="Explore our portfolio of premium residential and commercial projects across Mumbai. Find your dream home with SAQ."
             />
             {/* 1. HERO SECTION - Cinematic Static */}
             <section className="relative h-[50vh] min-h-[400px] w-full overflow-hidden">

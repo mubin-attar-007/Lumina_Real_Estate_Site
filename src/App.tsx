@@ -30,11 +30,26 @@ const NotFound = lazy(() => import('@/pages/NotFound'));
 const PageLoader = lazy(() => import('@/components/common/PageLoader'));
 
 // Scroll to top on route change
+// Scroll to top on route change
 const ScrollToTop = () => {
   const { pathname } = useLocation();
-  React.useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  React.useLayoutEffect(() => {
+    // Disable browser's default scroll restoration to avoid conflicts
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+
+    // Fallback: sometimes 'smooth' or delayed rendering can cause issues, force it again slightly later
+    const timeout = setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, 10);
+
+    return () => clearTimeout(timeout);
   }, [pathname]);
+
   return null;
 };
 

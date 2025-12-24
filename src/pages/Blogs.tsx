@@ -1,13 +1,13 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { Calendar, ArrowUpRight } from 'lucide-react';
+// import { Link } from 'react-router-dom';
+import { ArrowUpRight } from 'lucide-react';
 import { BLOGS_DATA } from '@/config/constants';
 import SEO from '@/components/common/SEO';
 
 const Blogs: React.FC = () => {
    return (
       <div className="min-h-screen bg-white">
-         <SEO title="Lumina Journal" description="Insights on luxury living, real estate trends, and architectural design." />
+         <SEO title="SAQ Journal" description="Insights on luxury living, real estate trends, and architectural design." />
 
          {/* 1. HERO SECTION - Cinematic Fullscreen */}
          <section className="relative h-[60vh] w-full overflow-hidden">

@@ -37,8 +37,8 @@ const ServicesSection: React.FC = () => {
                             <span className="text-xs font-bold uppercase tracking-[0.3em] text-gold-500 mb-6 block">
                                 Our Expertise
                             </span>
-                            <h2 className="text-4xl md:text-5xl font-serif leading-tight">
-                                Integrated <br /> <span className="italic text-gray-500">Real Estate</span> <br /> Solutions.
+                            <h2 className="text-4xl md:text-5xl font-serif leading-tight text-white">
+                                Integrated <br /> <span className="italic text-gray-400">Real Estate</span> <br /> Solutions.
                             </h2>
                         </ScrollReveal>
                     </div>
@@ -50,7 +50,7 @@ const ServicesSection: React.FC = () => {
                                 <ScrollReveal key={service.id} delay={idx * 0.1} className="py-12 group">
                                     <Link to={service.link} className="flex flex-col md:flex-row md:items-center justify-between gap-6 group-hover:pl-4 transition-all duration-500">
                                         <div className="max-w-xl">
-                                            <h3 className="text-2xl md:text-3xl font-serif mb-3 group-hover:text-gold-500 transition-colors">
+                                            <h3 className="text-2xl md:text-3xl font-serif mb-3 text-white group-hover:text-gold-500 transition-colors">
                                                 {service.title}
                                             </h3>
                                             <p className="text-gray-400 font-light leading-relaxed">

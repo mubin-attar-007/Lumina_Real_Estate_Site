@@ -1,15 +1,44 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, ChevronDown, Facebook, Instagram, Linkedin, Twitter } from 'lucide-react';
+import { Instagram, Linkedin, Twitter, Facebook, X } from 'lucide-react';
 import { useModal } from '@/context/ModalContext';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion, useScroll, useSpring } from 'framer-motion';
+import PremiumButton from '@/components/common/PremiumButton';
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [hoveredLink, setHoveredLink] = useState<string | null>(null);
   const location = useLocation();
   const { openEnquire } = useModal();
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
+
+  // Links for Center Nav (Builder Focused)
+  const centerLinks = [
+    { label: 'Legacy', path: '/about' },
+    { label: 'Projects', path: '/projects' },
+    { label: 'Redevelopment', path: '/redevelop' },
+    { label: 'Press', path: '/media' },
+  ];
+
+  // Links for Side Drawer (Comprehensive Builder Site)
+  const drawerLinks = [
+    { label: 'Home', path: '/' },
+    { label: 'Legacy', path: '/about' },
+    { label: 'Projects', path: '/projects' },
+    { label: 'Redevelopment', path: '/redevelop' },
+    { label: 'Careers', path: '/careers' },
+    { label: 'Press Room', path: '/media' },
+    { label: 'Journal', path: '/blogs' },
+    { label: 'Channel Partners', path: '/channel-partners' },
+    { label: 'NRI Corner', path: '/nri' },
+    { label: 'CSR', path: '/csr' },
+    { label: 'Contact', path: '/contact' },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,208 +58,177 @@ const Navbar: React.FC = () => {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'unset';
+      document.body.style.paddingRight = '0px';
     }
-    return () => { document.body.style.overflow = 'unset'; };
+    return () => {
+      document.body.style.overflow = 'unset';
+      document.body.style.paddingRight = '0px';
+    };
   }, [isOpen]);
 
-  const isDarkText = scrolled || isOpen || hoveredLink !== null;
+  const isDarkText = scrolled || isOpen;
 
-  const navClasses = `fixed top-0 left-0 w-full z-[100] transition-all duration-700 ease-[0.22,1,0.36,1] ${scrolled || hoveredLink
-    ? 'bg-white/90 backdrop-blur-xl shadow-sm py-4'
-    : 'bg-transparent py-8'
+  // Background logic
+  const navClasses = `fixed top-0 left-0 w-full z-[100] transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${scrolled && !isOpen
+    ? 'bg-white/95 backdrop-blur-xl shadow-sm py-4'
+    : 'bg-transparent py-6 md:py-8'
     }`;
 
-  const textColorClass = isOpen ? 'text-brand-900' : (isDarkText ? 'text-gray-900' : 'text-white');
-  const logoTextClass = isOpen ? 'text-brand-900' : (isDarkText ? 'text-brand-900' : 'text-white');
-  const subLogoTextClass = isOpen ? 'text-gray-500' : (isDarkText ? 'text-gray-400' : 'text-white/70');
-
-  const linkClasses = `text-[11px] font-bold uppercase tracking-[0.2em] transition-colors flex items-center gap-1 cursor-pointer ${textColorClass} hover:text-gold-500`;
-
-  // Mega Menu Content
-  const collectionLinks = [
-    { label: 'Residential', image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=400&q=80', path: '/projects?type=residential' },
-    { label: 'Commercial', image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&q=80', path: '/projects?type=commercial' },
-    { label: 'Upcoming', image: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=400&q=80', path: '/projects?type=upcoming' },
-  ];
-
-  const mobileLinks = [
-    { label: 'Home', path: '/' },
-    { label: 'The Brand', path: '/about' },
-    { label: 'The Collection', path: '/projects' },
-    { label: 'Redevelopment', path: '/redevelop' },
-    { label: 'Careers', path: '/careers' },
-    { label: 'Press & Media', path: '/media' },
-    { label: 'Contact Us', path: '/contact' },
-  ];
+  const textColorClass = isOpen ? 'text-brand-900' : (scrolled ? 'text-brand-900' : 'text-white');
+  const logoTextClass = isOpen ? 'text-brand-900' : (scrolled ? 'text-brand-900' : 'text-white');
 
   return (
-    <nav
-      className={navClasses}
-      onMouseLeave={() => setHoveredLink(null)}
-    >
-      <div className="container mx-auto px-6 relative z-[101]">
-        <div className="flex justify-between items-center relative">
+    <>
+      {/* Scroll Progress Bar */}
+      <motion.div
+        className="fixed top-0 left-0 right-0 h-[2px] bg-gold-500 z-[101] origin-left"
+        style={{ scaleX }}
+      />
 
-          {/* 1. DESKTOP LEFT NAV */}
-          <div className="hidden lg:flex items-center space-x-12 w-5/12">
-            <Link to="/" className={linkClasses}>Home</Link>
+      <nav className={navClasses}>
+        <div className="container mx-auto px-6 md:px-12 relative z-[101]">
+          <div className="flex justify-between items-center relative">
 
-            {/* THE BRAND - Simple Dropdown */}
-            <div className="group relative py-4">
-              <Link to="/about" className={linkClasses}>The Brand <ChevronDown size={10} className="mt-0.5" /></Link>
-              <div className="absolute top-full left-0 w-48 bg-white shadow-xl py-2 hidden group-hover:block border-t border-gold-500 animate-fade-in-up">
-                <Link to="/about" className="block px-6 py-3 text-[10px] font-bold uppercase tracking-widest text-gray-500 hover:text-gold-500 hover:bg-gray-50 transition-colors">Our Legacy</Link>
-                <Link to="/about" className="block px-6 py-3 text-[10px] font-bold uppercase tracking-widest text-gray-500 hover:text-gold-500 hover:bg-gray-50 transition-colors">Philosophy</Link>
-              </div>
-            </div>
-
-            {/* COLLECTION - MEGA MENU TRIGGER */}
-            <div
-              className="group relative py-4"
-              onMouseEnter={() => setHoveredLink('collection')}
-            >
-              <Link to="/projects" className={linkClasses}>Collection <ChevronDown size={10} className="mt-0.5 opacity-50" /></Link>
-            </div>
-
-            <Link to="/careers" className={linkClasses}>Careers</Link>
-          </div>
-
-          {/* 2. CENTER LOGO */}
-          <div className="flex lg:justify-center lg:w-2/12 z-[102] relative">
-            <Link to="/" className="flex items-center gap-3 group cursor-pointer" onClick={() => setIsOpen(false)}>
-              <div className="relative w-8 h-8 transition-transform duration-700 ease-[0.22,1,0.36,1] group-hover:rotate-180 scale-90">
-                <div className="absolute top-0 left-0 w-3.5 h-3.5 bg-gold-500 rounded-[1px] transform rotate-45 translate-x-2.5"></div>
-                <div className={`absolute top-2.5 left-0 w-3.5 h-3.5 rounded-[1px] transform rotate-45 ${isDarkText ? 'bg-brand-900' : 'bg-brand-100'}`}></div>
-                <div className={`absolute top-2.5 right-0 w-3.5 h-3.5 rounded-[1px] transform rotate-45 ${isDarkText ? 'bg-brand-800' : 'bg-brand-100'}`}></div>
-              </div>
-              <div className="flex flex-col items-start">
-                <span className={`text-2xl font-bold font-serif tracking-tighter leading-none ${logoTextClass} transition-colors duration-300`}>LUMINA</span>
-                <span className={`text-[8px] uppercase tracking-[0.35em] font-medium ml-0.5 ${subLogoTextClass} transition-colors duration-300`}>ESTATES</span>
-              </div>
-            </Link>
-          </div>
-
-          {/* 3. DESKTOP RIGHT NAV */}
-          <div className="hidden lg:flex items-center justify-end space-x-12 w-5/12">
-            <Link to="/redevelop" className={linkClasses}>Redevelopment</Link>
-            <Link to="/media" className={linkClasses}>Press</Link>
-            <button
-              onClick={openEnquire}
-              className={`text-[10px] font-bold uppercase tracking-[0.2em] border ${scrolled || hoveredLink ? 'border-brand-900 text-brand-900' : 'border-white text-white'} px-8 py-3 hover:bg-gold-500 hover:border-gold-500 hover:text-white transition-all duration-300`}
-            >
-              Inquire
-            </button>
-          </div>
-
-          {/* 4. MOBILE TOGGLE */}
-          <div className={`lg:hidden z-[102] ${textColorClass} transition-colors relative`}>
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="p-2 focus:outline-none hover:text-gold-500 transition-colors"
-              aria-label="Toggle Menu"
-            >
-              {isOpen ? <X size={28} /> : <Menu size={28} />}
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* MEGA MENU CONTAINER (Desktop) */}
-      <div
-        className={`hidden lg:block absolute top-0 left-0 w-full bg-white shadow-2xl transition-all duration-500 overflow-hidden ${hoveredLink === 'collection' ? 'h-[400px] opacity-100 pointer-events-auto' : 'h-0 opacity-0 pointer-events-none'}`}
-        onMouseEnter={() => setHoveredLink('collection')}
-        onMouseLeave={() => setHoveredLink(null)}
-      >
-        <div className="container mx-auto px-6 pt-32 h-full">
-          <div className="grid grid-cols-4 gap-8 h-full pb-12">
-            <div className="col-span-1 pr-12 border-r border-gray-100">
-              <h4 className="text-3xl font-serif font-bold text-brand-900 mb-6">The Collection</h4>
-              <p className="text-gray-500 text-sm leading-relaxed mb-8">
-                Discover our portfolio of award-winning residences and commercial landmarks that redefine the Mumbai skyline.
-              </p>
-              <Link to="/projects" className="text-gold-500 text-xs font-bold uppercase tracking-widest hover:text-brand-900 transition-colors flex items-center gap-2">
-                View All Projects <ChevronDown className="rotate-[-90deg]" size={12} />
-              </Link>
-            </div>
-            {collectionLinks.map((item, idx) => (
-              <Link to={item.path} key={idx} className="group relative overflow-hidden h-64 w-full cursor-pointer">
-                <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors z-10"></div>
-                <img src={item.image} alt={item.label} className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" />
-                <div className="absolute inset-0 flex flex-col justify-end p-6 z-20">
-                  <span className="text-white text-xl font-serif font-bold mb-2 translate-y-2 group-hover:translate-y-0 transition-transform duration-500">{item.label}</span>
-                  <span className="text-white/70 text-[10px] uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-500">Explore</span>
+            {/* 1. LEFT - LOGO */}
+            <div className="w-3/12 md:w-3/12 flex justify-start items-center z-[102] relative">
+              <Link to="/" className="flex items-center gap-2 group cursor-pointer" onClick={() => setIsOpen(false)}>
+                <div className="flex flex-col items-start">
+                  <span className={`text-xl md:text-2xl font-serif font-bold tracking-tight leading-none ${logoTextClass} transition-colors duration-300`}>LUMINA</span>
+                  <span className={`text-[8px] md:text-[10px] uppercase tracking-[0.35em] font-medium ml-0.5 ${logoTextClass} opacity-80 transition-colors duration-300`}>ESTATES</span>
                 </div>
               </Link>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* PREMIUM MOBILE MENU WITH FRAMER MOTION */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3, ease: 'easeInOut' }}
-            className="fixed inset-0 z-[100] h-[100dvh] bg-white flex flex-col pt-24 pb-8 px-6 overflow-y-auto"
-          >
-            {/* Background Texture */}
-            <div className="absolute inset-0 pointer-events-none opacity-[0.03]" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }}></div>
-
-            <div className="flex flex-col items-center space-y-6 flex-grow justify-center min-h-[400px]">
-              {mobileLinks.map((link, index) => (
-                <motion.div
-                  key={link.path}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.05 + 0.1 }}
-                >
-                  <Link
-                    to={link.path}
-                    onClick={() => setIsOpen(false)}
-                    className="text-2xl font-serif font-medium text-brand-900 hover:text-gold-500 tracking-wide transition-colors duration-300 relative group"
-                  >
-                    {link.label}
-                    <span className="absolute -bottom-1 left-1/2 w-0 h-[1px] bg-gold-500 group-hover:w-full group-hover:left-0 transition-all duration-300 ease-out"></span>
-                  </Link>
-                </motion.div>
-              ))}
-
-              <motion.button
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.5 }}
-                onClick={() => { openEnquire(); setIsOpen(false); }}
-                className="mt-8 px-12 py-5 bg-brand-900 text-white text-xs font-bold uppercase tracking-[0.2em] hover:bg-gold-500 transition-all duration-300 shadow-xl"
-              >
-                Inquire Now
-              </motion.button>
             </div>
 
-            {/* Footer Info in Menu */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.6 }}
-              className="mt-auto pt-10 border-t border-gray-100 flex flex-col items-center gap-6"
-            >
-              <div className="flex gap-6 text-gray-400">
-                <a href="#" className="hover:text-gold-500 transition-colors" aria-label="Instagram"><Instagram size={20} /></a>
-                <a href="#" className="hover:text-gold-500 transition-colors" aria-label="LinkedIn"><Linkedin size={20} /></a>
-                <a href="#" className="hover:text-gold-500 transition-colors" aria-label="Twitter"><Twitter size={20} /></a>
-                <a href="#" className="hover:text-gold-500 transition-colors" aria-label="Facebook"><Facebook size={20} /></a>
-              </div>
-              <p className="text-[10px] text-gray-400 uppercase tracking-widest">
-                © 2025 Lumina Estates.
-              </p>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            {/* 2. CENTER - LINKS (Desktop Only) */}
+            <div className={`hidden lg:flex w-6/12 justify-center items-center space-x-12 ${textColorClass} transition-colors duration-300`}>
+              {centerLinks.map((link) => (
+                <Link
+                  key={link.path}
+                  to={link.path}
+                  className="text-xs font-bold uppercase tracking-widest hover:text-gold-500 transition-colors relative group"
+                >
+                  {link.label}
+                  <span className="absolute -bottom-2 left-1/2 w-0 h-[1px] bg-gold-500 group-hover:w-full group-hover:left-0 transition-all duration-300"></span>
+                </Link>
+              ))}
+            </div>
 
-    </nav>
+            {/* 3. RIGHT - MENU TOGGLE */}
+            <div className="w-9/12 md:w-3/12 flex justify-end items-center z-[102] relative">
+              <div className={`hidden md:block mr-12 ${textColorClass} transition-colors duration-300`}>
+                <Link to="/contact" className="text-xs font-bold uppercase tracking-widest hover:text-gold-500 transition-colors">
+                  Connect
+                </Link>
+              </div>
+
+              <button
+                onClick={() => setIsOpen(!isOpen)}
+                className={`focus:outline-none transition-colors ${textColorClass} flex items-center gap-3 group`}
+                aria-label="Toggle Menu"
+              >
+                <div className="space-y-1.5 p-1">
+                  <span className={`block w-8 h-[1px] bg-current transition-transform duration-300 ${isOpen ? 'rotate-45 translate-y-1.5' : ''}`}></span>
+                  <span className={`block w-6 h-[1px] bg-current ml-auto transition-opacity duration-300 ${isOpen ? 'opacity-0' : ''}`}></span>
+                  <span className={`block w-8 h-[1px] bg-current transition-transform duration-300 ${isOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
+                </div>
+              </button>
+            </div>
+
+          </div>
+        </div>
+
+        {/* FULL SCREEN MENU (100% Width) */}
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ type: "tween", ease: [0.22, 1, 0.36, 1], duration: 0.6 }}
+              className="fixed inset-0 z-[200] bg-white flex overflow-hidden"
+            >
+              {/* LEFT COLUMN: 70% Width - CEO / Founder Image (Builder Context) */}
+              <div className="hidden lg:block w-[70%] h-full relative overflow-hidden bg-gray-100">
+                <img
+                  /* Using a 'clean' professional portrait placeholder */
+                  src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=1600"
+                  alt="CEO Portrait"
+                  className="absolute inset-0 w-full h-full object-cover object-top opacity-[0.97] hover:scale-105 transition-transform duration-[2s] ease-out grayscale hover:grayscale-0"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-80"></div>
+
+                <div className="absolute bottom-16 left-16 text-white max-w-xl">
+                  <p className="text-sm font-bold uppercase tracking-[0.2em] mb-4 text-gold-400">The Visionary</p>
+                  <p className="text-4xl font-serif italic leading-tight">
+                    "We don't just build structures;<br />we engineer legacies for generations."
+                  </p>
+                  <p className="mt-6 text-xs font-bold uppercase tracking-widest opacity-80">— Rajiv Malhotra, Chairman</p>
+                </div>
+              </div>
+
+              {/* RIGHT COLUMN: 30% Width - Menu Links */}
+              <div className="w-full lg:w-[30%] h-full flex flex-col p-12 lg:p-16 relative bg-white">
+
+                {/* Close Button (Top Right) */}
+                <div className="flex justify-end mb-12">
+                  <button
+                    onClick={() => setIsOpen(false)}
+                    className="group flex items-center gap-3 text-brand-900 focus:outline-none"
+                  >
+                    <span className="text-xs font-bold uppercase tracking-widest group-hover:text-gold-600 transition-colors">Close</span>
+                    <div className="relative w-8 h-8 rounded-full border border-gray-200 flex items-center justify-center group-hover:border-gold-500 transition-colors">
+                      <X size={14} className="group-hover:rotate-90 transition-transform duration-300" />
+                    </div>
+                  </button>
+                </div>
+
+                {/* Links List */}
+                <nav className="flex flex-col space-y-5 flex-grow justify-center">
+                  {drawerLinks.map((link, idx) => (
+                    <motion.div
+                      key={link.path}
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.3 + (idx * 0.05) }}
+                    >
+                      <Link
+                        to={link.path}
+                        onClick={() => setIsOpen(false)}
+                        className="text-3xl lg:text-4xl font-serif font-medium text-brand-900 hover:text-gold-600 transition-colors block"
+                      >
+                        {link.label}
+                      </Link>
+                    </motion.div>
+                  ))}
+                </nav>
+
+                {/* Footer Info */}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.6 }}
+                  className="mt-8 pt-8 border-t border-gray-100"
+                >
+                  <PremiumButton onClick={() => { openEnquire(); setIsOpen(false); }} className="w-full justify-center mb-8">
+                    Partner With Us
+                  </PremiumButton>
+
+                  <div className="flex justify-between items-center text-gray-400">
+                    <div className="flex gap-4">
+                      <Instagram size={18} className="hover:text-gold-500 cursor-pointer transition-colors" />
+                      <Linkedin size={18} className="hover:text-gold-500 cursor-pointer transition-colors" />
+                    </div>
+                    <span className="text-[10px] font-bold uppercase tracking-widest">© 2025</span>
+                  </div>
+                </motion.div>
+
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+      </nav>
+    </>
   );
 };
 

@@ -1,64 +1,113 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { BRAND } from '@/config/constants';
+import React, { useState, useEffect, useRef } from 'react';
+import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
+import { ArrowDown } from 'lucide-react';
 
 const Hero: React.FC = () => {
+    const [currentSlide, setCurrentSlide] = useState(0);
+    const containerRef = useRef<HTMLDivElement>(null);
+    const { scrollY } = useScroll();
+
+    // Parallax logic
+    const y = useTransform(scrollY, [0, 1000], [0, 400]);
+    const opacity = useTransform(scrollY, [0, 500], [1, 0]);
+
+    const slides = [
+        "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&q=80&w=2000",
+        "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=2000",
+        "https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&q=80&w=2000",
+        "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80&w=2000"
+    ];
+
+    useEffect(() => {
+        const timer = setInterval(() => {
+            setCurrentSlide((prev) => (prev + 1) % slides.length);
+        }, 6000); // Change slide every 6 seconds
+        return () => clearInterval(timer);
+    }, []);
+
     return (
-        <section className="relative h-screen w-full overflow-hidden">
-            <div className="absolute inset-0 w-full h-full bg-black">
-                <motion.img
-                    initial={{ scale: 1.1, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 0.7 }}
-                    transition={{ duration: 1.5, ease: "easeOut" }}
-                    src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80&w=2000"
-                    alt="Hero Building"
-                    className="w-full h-full object-cover bw-transition"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/40"></div>
-            </div>
+        <div ref={containerRef} className="relative h-screen w-full overflow-hidden bg-brand-900 text-white">
 
-            <div className="absolute inset-0 flex flex-col justify-center px-6 md:px-24">
+            {/* 1. SLIDESHOW BACKGROUND (Ken Burns Effect) */}
+            <motion.div style={{ y }} className="absolute inset-0 z-0">
+                <div className="absolute inset-0 bg-black/40 z-[2]"></div> {/* Overlay for text contrast */}
+                <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/50 z-[2]"></div>
+
+                <AnimatePresence mode="popLayout">
+                    <motion.img
+                        key={currentSlide}
+                        src={slides[currentSlide]}
+                        alt="Hero Background"
+                        initial={{ opacity: 0, scale: 1.1 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 2, ease: "easeInOut" }} // Smooth crossfade
+                        className="absolute inset-0 w-full h-full object-cover z-[1]"
+                    />
+                </AnimatePresence>
+            </motion.div>
+
+            {/* 2. CONTENT LAYER */}
+            <motion.div
+                style={{ opacity }}
+                className="relative z-10 h-full flex flex-col justify-end items-start text-left px-6 md:px-12 pb-32 md:pb-40"
+            >
+
+                {/* Subheading / Tagline */}
                 <motion.div
-                    initial="hidden"
-                    animate="visible"
-                    variants={{
-                        hidden: { opacity: 0, y: 30 },
-                        visible: {
-                            opacity: 1,
-                            y: 0,
-                            transition: {
-                                staggerChildren: 0.2,
-                                delayChildren: 0.5
-                            }
-                        }
-                    }}
-                    className="max-w-6xl"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.5 }}
+                    className="mb-8 overflow-hidden"
                 >
-                    <motion.h1
-                        variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
-                        className="text-5xl md:text-8xl font-serif font-bold text-white leading-[1.1] mb-8 tracking-tight"
-                    >
-                        {BRAND.name} <span className="text-gold-500 italic">&mdash;</span><br />
-                        {BRAND.tagline}
-                    </motion.h1>
-                    <motion.div
-                        variants={{ hidden: { scaleX: 0 }, visible: { scaleX: 1 } }}
-                        className="h-1 w-24 bg-gold-500 mb-8 origin-left"
-                    ></motion.div>
-                    <motion.p
-                        variants={{ hidden: { opacity: 0 }, visible: { opacity: 0.8 } }}
-                        className="text-white/80 text-lg font-light tracking-wide max-w-2xl"
-                    >
-                        Redefining luxury living with over {BRAND.founded ? new Date().getFullYear() - BRAND.founded : 38} years of excellence. Where architectural brilliance meets soulful living.
-                    </motion.p>
+                    <span className="inline-block text-xs font-bold uppercase tracking-[0.3em] text-gold-500 border-l-2 border-gold-500 pl-4">
+                        Est. 1985 — Global Development
+                    </span>
                 </motion.div>
-            </div>
 
-            <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce text-white/50">
-                <span className="text-[10px] uppercase tracking-widest block mb-2">Scroll</span>
-                <div className="w-[1px] h-12 bg-white/30 mx-auto"></div>
-            </div>
-        </section>
+                {/* Main Heading */}
+                <motion.h1
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                    className="text-5xl md:text-7xl font-serif font-medium tracking-tight leading-[1.05] mb-8 max-w-4xl text-white drop-shadow-2xl"
+                >
+                    Crafting skylines, <br />
+                    <span className="italic font-light text-white/90">creating legacies.</span>
+                </motion.h1>
+
+                {/* Description - Hiding on mobile to save space, visible on large screens */}
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 1, delay: 0.8 }}
+                    className="hidden md:block max-w-lg text-sm md:text-base font-light text-white/80 leading-relaxed border-l border-white/20 pl-6 drop-shadow-md"
+                >
+                    <p>
+                        Lumina Estates engineers the world's most prestigious residential and commercial properties, redefining the standard of luxury living.
+                    </p>
+                </motion.div>
+
+            </motion.div>
+
+            {/* 3. SCROLL INDICATOR */}
+            <motion.div
+                style={{ opacity }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1.5, duration: 1 }}
+                className="absolute bottom-12 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2"
+            >
+                <span className="text-[10px] font-bold uppercase tracking-widest text-gold-500">Explore</span>
+                <motion.div
+                    animate={{ y: [0, 8, 0] }}
+                    transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+                >
+                    <ArrowDown size={20} className="text-white" />
+                </motion.div>
+            </motion.div>
+
+        </div>
     );
 };
 

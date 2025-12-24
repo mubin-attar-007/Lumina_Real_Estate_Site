@@ -1,28 +1,18 @@
 import React, { useEffect } from 'react';
 import Hero from '@/components/features/home/Hero';
 import LegacySection from '@/components/features/home/LegacySection';
-import StatsSection from '@/components/features/home/StatsSection';
+import ServicesSection from '@/components/features/home/ServicesSection';
+
 import FeaturedResidences from '@/components/features/home/FeaturedResidences';
-import AwardsSection from '@/components/features/home/AwardsSection';
-import TestimonialsSection from '@/components/features/home/TestimonialsSection';
 import JournalSection from '@/components/features/home/JournalSection';
-import VerticalsSection from '@/components/features/home/VerticalsSection';
+import ManifestoSection from '@/components/features/home/ManifestoSection';
 
 import SEO from '@/components/common/SEO';
 
 const Home: React.FC = () => {
+   // Legacy observer removed - using ScrollReveal component
    useEffect(() => {
-      const observer = new IntersectionObserver((entries) => {
-         entries.forEach(entry => {
-            if (entry.isIntersecting) {
-               entry.target.classList.add('opacity-100', 'translate-y-0');
-               entry.target.classList.remove('opacity-0', 'translate-y-12');
-            }
-         });
-      }, { threshold: 0.1 });
-
-      document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
-      return () => observer.disconnect();
+      window.scrollTo(0, 0);
    }, []);
 
    return (
@@ -32,13 +22,15 @@ const Home: React.FC = () => {
             description="Lumina Estates defines luxury living with iconic residential and commercial developments in Mumbai. Experience the art of soulful living."
          />
          <Hero />
+         <ManifestoSection />
          <LegacySection />
-         <StatsSection />
+         <ServicesSection />
+
          <FeaturedResidences />
-         <AwardsSection />
-         <TestimonialsSection />
+         {/* <AwardsSection /> */}
+         {/* <TestimonialsSection /> */}
          <JournalSection />
-         <VerticalsSection />
+         {/* <VerticalsSection /> */}
       </div>
    );
 };

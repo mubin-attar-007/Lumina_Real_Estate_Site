@@ -13,13 +13,13 @@ const VerticalsSection: React.FC = () => {
                 <div className="grid md:grid-cols-2 gap-0 border border-gray-200 shadow-2xl">
                     {VERTICALS_DATA.map((biz, index) => (
                         <div key={index} className="bg-white p-12 md:p-16 group relative overflow-hidden border-b md:border-b-0 md:border-r border-gray-200 last:border-r-0 min-h-[400px]">
-                            {/* Background Image - Now Visible by Default */}
-                            <div className="absolute inset-0 z-0 opacity-30 group-hover:opacity-50 transition-opacity duration-700">
+                            {/* Background Image - Strikingly Visible */}
+                            <div className="absolute inset-0 z-0 opacity-60 group-hover:opacity-100 transition-opacity duration-700">
                                 <img src={biz.img} className="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-700" alt={biz.title} />
                             </div>
 
-                            {/* Gradient Overlay for Text Readability */}
-                            <div className="absolute inset-0 z-[1] bg-gradient-to-br from-white/95 via-white/90 to-white/85 group-hover:from-white/90 group-hover:via-white/85 group-hover:to-white/80 transition-all duration-700"></div>
+                            {/* Gradient Overlay - Softened to allow background to pop */}
+                            <div className="absolute inset-0 z-[1] bg-gradient-to-br from-white/80 via-white/70 to-white/60 group-hover:from-white/70 group-hover:via-white/60 group-hover:to-white/50 transition-all duration-700"></div>
 
                             {/* Content */}
                             <div className="relative z-10">

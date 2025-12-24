@@ -7,7 +7,7 @@ const TestimonialsSection: React.FC = () => {
         <section className="py-32 bg-white relative">
             <div className="container mx-auto px-6 relative z-10">
                 <div className="text-center mb-20">
-                    <span className="text-gold-500 font-bold uppercase tracking-luxury text-[10px] mb-4 block">TESTIMONIALS</span>
+                    <span className="text-gold-500 font-bold uppercase tracking-luxury text-xs mb-4 block">TESTIMONIALS</span>
                     <h2 className="text-4xl font-serif font-bold text-brand-900">Voices of Lumina</h2>
                 </div>
 

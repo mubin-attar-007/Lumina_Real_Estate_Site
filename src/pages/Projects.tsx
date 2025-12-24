@@ -85,31 +85,30 @@ const Projects: React.FC = () => {
                 title="Luxury Properties Collection"
                 description="Explore our portfolio of premium residential and commercial projects across Mumbai. Find your dream home with Lumina."
             />
-            {/* 1. HERO SECTION */}
-            <section className="relative h-[60vh] w-full overflow-hidden">
+            {/* 1. HERO SECTION - Cinematic Static */}
+            <section className="relative h-[50vh] min-h-[400px] w-full overflow-hidden">
                 <div className="absolute inset-0 w-full h-full bg-black">
                     <img
-                        src="https://images.unsplash.com/photo-1574362848149-11496d93a7c7?auto=format&fit=crop&q=80&w=2000"
+                        src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=2653&auto=format&fit=crop"
                         alt="Projects Hero"
-                        className="w-full h-full object-cover opacity-60 bw-transition"
+                        loading="eager"
+                        className="w-full h-full object-cover opacity-60"
                     />
                 </div>
 
-                <div className="absolute inset-0 flex flex-col justify-end pb-24 px-6 md:px-20 bg-gradient-to-t from-black/80 via-transparent to-transparent">
+                <div className="absolute inset-0 flex flex-col justify-end pb-12 px-6 md:px-20 bg-gradient-to-t from-black/80 to-transparent">
                     <div className="animate-fade-in-up">
-                        <h1 className="text-5xl md:text-7xl font-serif font-bold text-white mb-4">
+                        <span className="text-white/80 text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] mb-4 block">
+                            Our Portfolio
+                        </span>
+                        <h1 className="text-4xl md:text-6xl font-serif text-white mb-2">
                             The Collection
                         </h1>
-                        <div className="flex items-center gap-2 text-white/80 text-xs font-bold uppercase tracking-[0.2em]">
-                            <span className="text-white hover:text-gold-500 cursor-pointer">HOME</span>
-                            <span>/</span>
-                            <span className="text-gold-500">PROJECTS</span>
-                        </div>
                     </div>
                 </div>
             </section>
 
-            {/* 2. SEARCH WIDGET (Overlapping) */}
+            {/* 2. SEARCH WIDGET (Clean Bar) */}
             <SearchWidget
                 filters={filters}
                 onFilterChange={handleFilterChange}
@@ -119,34 +118,27 @@ const Projects: React.FC = () => {
             />
 
             {/* 3. TABS / RESULTS */}
-            <section className="py-20">
-                <div className="container mx-auto px-6">
+            <section className="py-20 md:py-32">
+                <div className="container mx-auto px-6 md:px-20">
 
                     {/* Simple Tabs for Status Switching */}
-                    <div className="flex flex-wrap justify-center border-b border-gray-200 mb-16 max-w-4xl mx-auto gap-2 md:gap-0">
+                    <div className="flex flex-wrap items-center justify-center gap-8 mb-20">
                         {['Ongoing', 'Upcoming', 'Completed'].map((tab) => (
                             <button
                                 key={tab}
                                 onClick={() => handleFilterChange('status', tab)}
-                                className={`px-6 md:px-12 py-4 md:py-6 text-xs md:text-sm font-bold uppercase tracking-[0.2em] transition-all relative whitespace-nowrap ${filters.status === tab
-                                    ? 'text-brand-900'
-                                    : 'text-gray-400 hover:text-gray-600'
+                                className={`text-xs font-bold uppercase tracking-[0.2em] transition-all relative pb-2 ${filters.status === tab
+                                    ? 'text-brand-900 border-b-2 border-gold-500'
+                                    : 'text-gray-400 hover:text-brand-900 border-b-2 border-transparent'
                                     }`}
                             >
                                 {tab}
-                                {filters.status === tab && <div className="absolute bottom-0 left-0 w-full h-[3px] bg-gold-500"></div>}
                             </button>
                         ))}
                     </div>
 
                     {/* 4. PROJECT GRID */}
-                    <div className="text-center mb-12">
-                        <span className="text-gray-500 font-bold uppercase tracking-[0.2em] text-xs block mb-2">
-                            {filters.status ? `${filters.status} Projects` : 'All Projects'}
-                        </span>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
                         {isLoading ? (
                             // Show Skeletons
                             Array.from({ length: 4 }).map((_, i) => (

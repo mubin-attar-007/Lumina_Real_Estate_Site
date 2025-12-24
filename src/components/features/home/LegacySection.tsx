@@ -1,40 +1,51 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { BRAND } from '@/config/constants';
+import ScrollReveal from '@/components/common/ScrollReveal';
 
 const LegacySection: React.FC = () => {
     return (
-        <section className="py-32 bg-white reveal-on-scroll opacity-0 translate-y-12 transition-all duration-1000">
-            <div className="container mx-auto px-6">
-                <div className="flex flex-col lg:flex-row gap-24 items-center">
-                    <div className="lg:w-5/12">
-                        <span className="text-gold-500 font-bold uppercase tracking-luxury text-[10px] mb-6 block flex items-center gap-3">
-                            <span className="w-8 h-[1px] bg-gold-500"></span> THE BRAND
-                        </span>
-                        <h2 className="text-4xl md:text-5xl font-serif font-bold text-brand-900 mb-10 leading-tight">
-                            ARCHITECTS OF <span className="italic text-gray-400">ASPIRATION</span>
-                        </h2>
-                        <div className="space-y-8 text-gray-500 leading-loose text-sm font-light text-justify">
-                            <p>At {BRAND.name}, we don't just build structures; we curate lifestyles. Since {BRAND.founded}, our mission has been to create spaces that resonate with the ambitions of modern India while staying rooted in timeless design principles.</p>
-                            <p>With over {BRAND.stats.projects} completed landmarks and {BRAND.stats.sqft} sq.ft. developed, our footprint is a testament to trust, transparency, and technical superiority.</p>
+        <section className="bg-brand-900 text-white py-24 md:py-32 overflow-hidden relative">
+            <div className="container mx-auto px-6 md:px-12 relative z-10">
 
-                            <Link to="/about" className="inline-block border-b border-brand-900 text-brand-900 pb-1 text-xs font-bold uppercase tracking-luxury hover:text-gold-500 hover:border-gold-500 transition-all mt-4">
-                                Discover Our Philosophy
-                            </Link>
-                        </div>
-                    </div>
-                    <div className="lg:w-7/12 relative">
-                        <div className="absolute -top-12 -left-12 w-32 h-32 border border-gold-500/30 z-0"></div>
-                        <div className="relative z-10 group">
-                            <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&q=80&w=1200" className="w-full bw-transition shadow-2xl" alt="Corporate Team" />
-                        </div>
-                        <div className="absolute -bottom-8 -right-8 bg-brand-900 p-8 max-w-xs shadow-xl hidden md:block">
-                            <p className="text-white font-serif italic text-lg leading-relaxed">"Excellence is not a skill, it is an attitude."</p>
-                            <p className="text-gold-500 text-xs font-bold uppercase mt-4 tracking-widest">— Rajiv Malhotra, Chairman</p>
-                        </div>
-                    </div>
+                {/* Section Header */}
+                <div className="flex flex-col md:flex-row justify-between items-end mb-20 border-b border-white/10 pb-12">
+                    <ScrollReveal>
+                        <span className="block text-gold-500 text-xs font-bold uppercase tracking-[0.2em] mb-4">
+                            The Track Record
+                        </span>
+                        <h2 className="text-4xl md:text-6xl font-serif">
+                            Proven Results
+                        </h2>
+                    </ScrollReveal>
+                    <ScrollReveal delay={0.2} className="mt-8 md:mt-0 max-w-md text-gray-400 font-light text-lg">
+                        <p>
+                            We don't just list homes; we curate markets. Our numbers tell the story of dedication, precision, and unrivaled expertise.
+                        </p>
+                    </ScrollReveal>
                 </div>
+
+                {/* Stats Grid - Builder Metrics (Real Data) */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-24">
+
+                    <ScrollReveal delay={0.1} className="border-l border-white/10 pl-8">
+                        <div className="text-6xl md:text-8xl font-serif text-white mb-2">15M+</div>
+                        <div className="text-sm font-bold uppercase tracking-widest text-gold-500">Sq. Ft. Developed</div>
+                    </ScrollReveal>
+
+                    <ScrollReveal delay={0.2} className="border-l border-white/10 pl-8">
+                        <div className="text-6xl md:text-8xl font-serif text-white mb-2">45k+</div>
+                        <div className="text-sm font-bold uppercase tracking-widest text-gold-500">Happy Families</div>
+                    </ScrollReveal>
+
+                    <ScrollReveal delay={0.3} className="border-l border-white/10 pl-8">
+                        <div className="text-6xl md:text-8xl font-serif text-white mb-2">60+</div>
+                        <div className="text-sm font-bold uppercase tracking-widest text-gold-500">Landmark Projects</div>
+                    </ScrollReveal>
+
+                </div>
+
             </div>
+
+            {/* Background Texture/Noise if needed, or keeping clean dark for now */}
         </section>
     );
 };

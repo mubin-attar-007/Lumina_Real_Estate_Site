@@ -23,8 +23,11 @@ const Media = lazy(() => import('@/pages/Media'));
 const Careers = lazy(() => import('@/pages/Careers'));
 const Blogs = lazy(() => import('@/pages/Blogs'));
 const Legal = lazy(() => import('@/pages/Legal'));
+const ChannelPartner = lazy(() => import('@/pages/ChannelPartner'));
+const NRI = lazy(() => import('@/pages/NRI'));
+const CSR = lazy(() => import('@/pages/CSR'));
 const NotFound = lazy(() => import('@/pages/NotFound'));
-import PageLoader from '@/components/common/PageLoader';
+const PageLoader = lazy(() => import('@/components/common/PageLoader'));
 
 // Scroll to top on route change
 const ScrollToTop = () => {
@@ -34,8 +37,6 @@ const ScrollToTop = () => {
   }, [pathname]);
   return null;
 };
-
-
 
 const AnimatedRoutes: React.FC = () => {
   const location = useLocation();
@@ -52,6 +53,9 @@ const AnimatedRoutes: React.FC = () => {
         <Route path="/contact" element={<PageTransition><Contact /></PageTransition>} />
         <Route path="/blogs" element={<PageTransition><Blogs /></PageTransition>} />
         <Route path="/legal" element={<PageTransition><Legal /></PageTransition>} />
+        <Route path="/channel-partners" element={<PageTransition><ChannelPartner /></PageTransition>} />
+        <Route path="/nri" element={<PageTransition><NRI /></PageTransition>} />
+        <Route path="/csr" element={<PageTransition><CSR /></PageTransition>} />
         <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
       </Routes>
     </AnimatePresence>

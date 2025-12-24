@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-// Link removed
-
 import { BRAND } from '@/config/constants';
 import SEO from '@/components/common/SEO';
 import { Shield, Lock, FileText, AlertCircle } from 'lucide-react';
@@ -12,108 +10,97 @@ const Legal: React.FC = () => {
       <div className="min-h-screen bg-white">
          <SEO title="Legal & Compliance" description="Privacy Policy, Terms of Use, and RERA Disclaimer for Lumina Estates." />
 
-         {/* Header */}
-         <section className="bg-brand-900 text-white pt-40 pb-20 relative overflow-hidden">
-            <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
-            <div className="container mx-auto px-6 text-center relative z-10">
-               <h1 className="text-4xl md:text-6xl font-serif font-bold mb-6">Legal & Compliance</h1>
-               <p className="text-gray-400 text-sm uppercase tracking-[0.2em]">Transparency • Trust • Integrity</p>
+         {/* 1. MINIMAL HEADER (Text Only) */}
+         <section className="pt-32 pb-16 px-6 md:px-20 border-b border-gray-100">
+            <div className="container mx-auto">
+               <span className="text-gold-500 font-bold uppercase tracking-[0.25em] text-xs mb-6 block">Transparency & Trust</span>
+               <h1 className="text-5xl md:text-6xl font-serif text-brand-900 mb-4">Legal & Compliance</h1>
             </div>
          </section>
 
-         {/* Tab Navigation */}
-         <section className="sticky top-20 z-30 bg-white/90 backdrop-blur-md border-b border-gray-100 shadow-sm">
-            <div className="container mx-auto px-6">
-               <div className="flex justify-center space-x-8 md:space-x-16 overflow-x-auto py-4">
-                  <button
-                     onClick={() => setActiveTab('privacy')}
-                     className={`flex items-center gap-2 text-xs font-bold uppercase tracking-widest pb-1 transition-colors ${activeTab === 'privacy' ? 'text-gold-500 border-b-2 border-gold-500' : 'text-gray-400 hover:text-brand-900'}`}
-                  >
-                     <Lock size={14} /> Privacy Policy
-                  </button>
-                  <button
-                     onClick={() => setActiveTab('terms')}
-                     className={`flex items-center gap-2 text-xs font-bold uppercase tracking-widest pb-1 transition-colors ${activeTab === 'terms' ? 'text-gold-500 border-b-2 border-gold-500' : 'text-gray-400 hover:text-brand-900'}`}
-                  >
-                     <FileText size={14} /> Terms of Use
-                  </button>
-                  <button
-                     onClick={() => setActiveTab('rera')}
-                     className={`flex items-center gap-2 text-xs font-bold uppercase tracking-widest pb-1 transition-colors ${activeTab === 'rera' ? 'text-gold-500 border-b-2 border-gold-500' : 'text-gray-400 hover:text-brand-900'}`}
-                  >
-                     <Shield size={14} /> Disclaimer
-                  </button>
+         {/* 2. TABBED CONTENT */}
+         <section className="bg-white min-h-[60vh]">
+            <div className="container mx-auto px-6 md:px-20 flex flex-col lg:flex-row gap-16 py-16">
+
+               {/* Sidebar Tabs */}
+               <div className="lg:w-1/4">
+                  <div className="flex flex-col items-start gap-2 sticky top-24">
+                     {['privacy', 'terms', 'rera'].map((tab) => (
+                        <button
+                           key={tab}
+                           onClick={() => setActiveTab(tab as any)}
+                           className={`text-sm font-bold uppercase tracking-widest py-3 px-6 rounded-full transition-all w-full text-left
+                                ${activeTab === tab ? 'bg-brand-900 text-white' : 'text-gray-400 hover:text-brand-900 hover:bg-gray-100'}`}
+                        >
+                           {tab === 'privacy' && 'Privacy Policy'}
+                           {tab === 'terms' && 'Terms of Use'}
+                           {tab === 'rera' && 'Disclaimer'}
+                        </button>
+                     ))}
+                  </div>
                </div>
-            </div>
-         </section>
 
-         {/* Content */}
-         <section className="py-20">
-            <div className="container mx-auto px-6 max-w-4xl">
+               {/* Content Area */}
+               <div className="lg:w-3/4 max-w-3xl">
+                  <div className="animate-fade-in-up key={activeTab}">
 
-               {/* PRIVACY POLICY */}
-               {activeTab === 'privacy' && (
-                  <div className="animate-fade-in-up">
-                     <h2 className="text-3xl font-serif font-bold text-brand-900 mb-8">Privacy Policy</h2>
-                     <div className="prose prose-sm text-gray-600 max-w-none text-justify space-y-6">
-                        <p>This Privacy Policy governs the manner in which {BRAND.name} collects, uses, maintains and discloses information collected from users (each, a "User") of the website. This privacy policy applies to the Site and all products and services offered by {BRAND.name}.</p>
-
-                        <h3 className="font-bold text-gray-900 uppercase text-xs tracking-widest mt-8 mb-4">1. Personal Identification Information</h3>
-                        <p>We may collect personal identification information from Users in a variety of ways, including, but not limited to, when Users visit our site, register on the site, subscribe to the newsletter, fill out a form, and in connection with other activities, services, features or resources we make available on our Site. Users may be asked for, as appropriate, name, email address, mailing address, phone number.</p>
-
-                        <h3 className="font-bold text-gray-900 uppercase text-xs tracking-widest mt-8 mb-4">2. Web Browser Cookies</h3>
-                        <p>Our Site may use "cookies" to enhance User experience. User's web browser places cookies on their hard drive for record-keeping purposes and sometimes to track information about them. User may choose to set their web browser to refuse cookies, or to alert you when cookies are being sent.</p>
-
-                        <h3 className="font-bold text-gray-900 uppercase text-xs tracking-widest mt-8 mb-4">3. Compliance with Indian Laws</h3>
-                        <p>We process your data in accordance with the Information Technology Act, 2000 and the Digital Personal Data Protection Act, 2023. We implement appropriate data collection, storage and processing practices and security measures to protect against unauthorized access.</p>
-                     </div>
-                  </div>
-               )}
-
-               {/* TERMS OF USE */}
-               {activeTab === 'terms' && (
-                  <div className="animate-fade-in-up">
-                     <h2 className="text-3xl font-serif font-bold text-brand-900 mb-8">Terms of Use</h2>
-                     <div className="prose prose-sm text-gray-600 max-w-none text-justify space-y-6">
-                        <p>Welcome to {BRAND.name}. By using this website, you agree to comply with and be bound by the following terms and conditions of use. Please check this page regularly to take notice of any changes we may have made to the Terms of Use.</p>
-
-                        <h3 className="font-bold text-gray-900 uppercase text-xs tracking-widest mt-8 mb-4">1. Intellectual Property</h3>
-                        <p>All content included on this site, such as text, graphics, logos, button icons, images, audio clips, digital downloads, data compilations, and software, is the property of {BRAND.name} or its content suppliers and protected by international copyright laws.</p>
-
-                        <h3 className="font-bold text-gray-900 uppercase text-xs tracking-widest mt-8 mb-4">2. Liability Limitation</h3>
-                        <p>The content on this website is for general information only. While we strive to keep the information up to date and correct, we make no representations or warranties of any kind, express or implied, about the completeness, accuracy, reliability, suitability or availability with respect to the website.</p>
-                     </div>
-                  </div>
-               )}
-
-               {/* RERA DISCLAIMER */}
-               {activeTab === 'rera' && (
-                  <div className="animate-fade-in-up">
-                     <h2 className="text-3xl font-serif font-bold text-brand-900 mb-8">Disclaimer & MahaRERA</h2>
-                     <div className="bg-gray-50 p-8 rounded-sm border-l-4 border-gold-500 mb-8">
-                        <div className="flex gap-4">
-                           <AlertCircle className="text-gold-500 flex-shrink-0" />
-                           <p className="text-xs text-gray-600 leading-relaxed font-bold">
-                              All our ongoing projects are registered with Maharashtra Real Estate Regulatory Authority (MahaRERA).
+                     {/* PRIVACY */}
+                     {activeTab === 'privacy' && (
+                        <div className="space-y-8">
+                           <h2 className="text-3xl font-serif text-brand-900 border-b border-gray-100 pb-4">Privacy Policy</h2>
+                           <p className="text-gray-600 leading-relaxed text-lg font-light">
+                              At {BRAND.name}, we value your trust and are committed to protecting your personal data. This policy outlines how we handle your information with the utmost care and confidentiality.
                            </p>
+
+                           <div className="space-y-6">
+                              <div className="group">
+                                 <h3 className="text-lg font-bold text-brand-900 mb-2">Data Collection</h3>
+                                 <p className="text-gray-500 text-sm leading-relaxed">We collect limited personal information (Name, Email, Phone) only when you explicitly provide it via our inquiry forms to schedule visits or request details.</p>
+                              </div>
+                              <div className="group">
+                                 <h3 className="text-lg font-bold text-brand-900 mb-2">Usage & Security</h3>
+                                 <p className="text-gray-500 text-sm leading-relaxed">Your data is stored on secure, encrypted servers. We do not sell, trade, or rent your identification information to third parties.</p>
+                              </div>
+                           </div>
                         </div>
-                     </div>
+                     )}
 
-                     <div className="prose prose-sm text-gray-600 max-w-none text-justify space-y-6">
-                        <h3 className="font-bold text-gray-900 uppercase text-xs tracking-widest mt-8 mb-4">1. Artist's Impressions</h3>
-                        <p>The images, designs, and facilities shown in this website are artistic impressions and are up to the date of the upload. They are indicative in nature and for general information purposes only. The actual property may vary from these impressions.</p>
+                     {/* TERMS */}
+                     {activeTab === 'terms' && (
+                        <div className="space-y-8">
+                           <h2 className="text-3xl font-serif text-brand-900 border-b border-gray-100 pb-4">Terms of Use</h2>
+                           <p className="text-gray-600 leading-relaxed text-lg font-light">
+                              Accessing certain areas of this website serves as your agreement to be bound by these provisions.
+                           </p>
+                           <ul className="list-disc pl-5 space-y-4 text-gray-500 text-sm leading-relaxed marker:text-gold-500">
+                              <li>The content provided is for general information regarding our projects and legacy.</li>
+                              <li>All intellectual property, including architectural renders, logos, and text, belongs to {BRAND.name}.</li>
+                              <li>We reserve the right to modify project specifications as per regulatory requirements without prior notice.</li>
+                           </ul>
+                        </div>
+                     )}
 
-                        <h3 className="font-bold text-gray-900 uppercase text-xs tracking-widest mt-8 mb-4">2. No Offer of Contract</h3>
-                        <p>This website does not constitute an offer and/or contract of any type between the Developer/Promoter and the recipient. Any purchaser of this development shall be governed by the terms and conditions of the Agreement for Sale entered into between the parties, and no details mentioned in this website shall in any way govern such transactions.</p>
+                     {/* RERA */}
+                     {activeTab === 'rera' && (
+                        <div className="space-y-8">
+                           <h2 className="text-3xl font-serif text-brand-900 border-b border-gray-100 pb-4">MahaRERA Disclaimer</h2>
 
-                        <h3 className="font-bold text-gray-900 uppercase text-xs tracking-widest mt-8 mb-4">3. Verification</h3>
-                        <p>We request all our customers to inspect the RERA registration number and related details on the official MahaRERA website (<a href="https://maharera.mahaonline.gov.in/" target="_blank" className="text-gold-600 hover:underline">https://maharera.mahaonline.gov.in/</a>) before making a decision.</p>
-                     </div>
+                           <div className="bg-gold-50 p-6 border border-gold-200 rounded-sm flex gap-4 items-start">
+                              <AlertCircle className="text-gold-600 shrink-0 mt-1" />
+                              <div>
+                                 <h4 className="font-bold text-brand-900 mb-1">Official Registration</h4>
+                                 <p className="text-sm text-gray-600">All our ongoing projects are strictly registered with MahaRERA. Registration numbers are available on project details pages.</p>
+                              </div>
+                           </div>
+
+                           <div className="prose prose-sm text-gray-500 max-w-none space-y-4">
+                              <p>The imagery used on the website is indicative of artist's impressions. Furniture, accessories, and interior fixtures shown in show residences are not part of standard offerings unless explicitly stated.</p>
+                              <p>We invite you to verify all details, including approvals and plans, at our corporate office or the official <a href="https://maharera.mahaonline.gov.in/" target="_blank" rel="noreferrer" className="text-brand-900 underline hover:text-gold-600">MahaRERA Website</a>.</p>
+                           </div>
+                        </div>
+                     )}
+
                   </div>
-               )}
-
-               <div className="pt-10 border-t border-gray-200 mt-12">
-                  <p className="text-xs text-gray-400">Last Updated: {new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</p>
                </div>
 
             </div>

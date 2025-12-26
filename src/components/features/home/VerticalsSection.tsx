@@ -3,16 +3,16 @@ import { VERTICALS_DATA } from '@/config/constants';
 
 const VerticalsSection: React.FC = () => {
     return (
-        <section className="py-32 bg-brand-900 relative">
+        <section className="py-20 md:py-32 bg-brand-900 relative">
             <div className="container mx-auto px-6">
-                <div className="mb-20 text-center">
+                <div className="mb-12 md:mb-20 text-center">
                     <span className="text-gold-500 font-bold uppercase tracking-luxury text-[10px] mb-4 block">VERTICALS</span>
-                    <h2 className="text-4xl font-serif font-bold text-white">Beyond Real Estate</h2>
+                    <h2 className="text-3xl md:text-4xl font-serif font-bold text-white">Beyond Real Estate</h2>
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-0 border border-gold-500/20 shadow-2xl">
                     {VERTICALS_DATA.map((biz, index) => (
-                        <div key={index} className="bg-brand-950/50 p-12 md:p-16 group relative overflow-hidden boundary-row border-b md:border-b-0 md:border-r border-gold-500/10 min-h-[400px]">
+                        <div key={index} className="bg-brand-950/50 p-8 md:p-16 group relative overflow-hidden boundary-row border-b md:border-b-0 md:border-r border-gold-500/10 min-h-[300px] md:min-h-[400px]">
                             {/* Background Image - Strikingly Visible */}
                             <div className="absolute inset-0 z-0 opacity-90 group-hover:opacity-100 transition-opacity duration-700">
                                 <img src={biz.img} className="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-700" alt={biz.title} />

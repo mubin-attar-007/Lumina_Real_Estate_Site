@@ -12,7 +12,7 @@ const Footer: React.FC = () => {
          <div className="container mx-auto px-6 relative z-10">
 
             {/* UPPER SECTION: Content with Background Text */}
-            <div className="relative py-24 md:py-32">
+            <div className="relative py-16 md:py-32">
 
                {/* Massive Background Text */}
                <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden">

@@ -69,12 +69,13 @@ const ScrollReveal: React.FC<ScrollRevealProps> = ({
     const variants = getVariants();
 
     return (
-        <div ref={ref} style={{ position: "relative", width, overflow: "hidden" }} className={className}>
+        <div ref={ref} style={{ position: "relative", width }} className={`${className} h-full`}>
             <motion.div
                 variants={variants as any}
                 initial="hidden"
                 animate={mainControls}
-                transition={{ duration, delay, ease: [0.22, 1, 0.36, 1] }} // "custom cubic-bezier" matching the smooth feel
+                transition={{ duration, delay, ease: [0.22, 1, 0.36, 1] }}
+                className="h-full"
             >
                 {children}
             </motion.div>

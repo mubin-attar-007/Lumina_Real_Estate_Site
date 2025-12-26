@@ -9,25 +9,25 @@ const FeaturedResidences: React.FC = () => {
     const featuredProjects = PROJECTS_DATA.slice(0, 4);
 
     return (
-        <section className="bg-gray-50 py-24 md:py-40">
+        <section className="bg-gray-50 py-16 md:py-40">
             <div className="container mx-auto px-6 md:px-12">
 
                 {/* Header */}
-                <div className="mb-24 text-center">
+                <div className="mb-16 md:mb-24 text-center">
                     <ScrollReveal animation="fade-up">
                         <span className="text-xs font-bold uppercase tracking-[0.3em] text-gold-600 mb-4 block">
                             Our Portfolio
                         </span>
-                        <h2 className="text-4xl md:text-6xl font-serif text-brand-900">
+                        <h2 className="text-3xl md:text-6xl font-serif text-brand-900">
                             Current Offerings
                         </h2>
                     </ScrollReveal>
                 </div>
 
                 {/* Projects List - Zig Zag */}
-                <div className="flex flex-col gap-32">
+                <div className="flex flex-col gap-20 md:gap-32">
                     {featuredProjects.map((project, index) => (
-                        <div key={project.id} className={`flex flex-col ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} gap-12 md:gap-24 items-center`}>
+                        <div key={project.id} className={`flex flex-col ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} gap-8 md:gap-24 items-center`}>
 
                             {/* Image Side */}
                             <div className="w-full md:w-3/5">
@@ -56,7 +56,7 @@ const FeaturedResidences: React.FC = () => {
                                     <span className="text-gold-500 text-[10px] font-bold uppercase tracking-[0.2em] mb-4">
                                         {project.location}
                                     </span>
-                                    <h3 className="text-3xl md:text-4xl font-serif text-brand-900 mb-6 leading-tight">
+                                    <h3 className="text-2xl md:text-4xl font-serif text-brand-900 mb-4 md:mb-6 leading-tight">
                                         {project.title}
                                     </h3>
                                     <p className="text-gray-500 font-light leading-relaxed mb-8 max-w-sm">

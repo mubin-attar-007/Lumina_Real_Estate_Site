@@ -26,12 +26,12 @@ const Hero: React.FC = () => {
     }, []);
 
     return (
-        <div ref={containerRef} className="relative h-screen w-full overflow-hidden bg-brand-900 text-white">
+        <div ref={containerRef} className="relative h-[100dvh] w-full overflow-hidden bg-brand-900 text-white">
 
             {/* 1. SLIDESHOW BACKGROUND (Ken Burns Effect) */}
             <motion.div style={{ y }} className="absolute inset-0 z-0">
-                <div className="absolute inset-0 bg-black/40 z-[2]"></div> {/* Overlay for text contrast */}
-                <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/50 z-[2]"></div>
+                <div className="absolute inset-0 bg-black/50 z-[2]"></div> {/* Overlay for text contrast */}
+                <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/60 z-[2]"></div>
 
                 <AnimatePresence mode="popLayout">
                     <motion.img
@@ -50,7 +50,7 @@ const Hero: React.FC = () => {
             {/* 2. CONTENT LAYER */}
             <motion.div
                 style={{ opacity }}
-                className="relative z-10 h-full flex flex-col justify-end items-start text-left px-6 md:px-12 pb-32 md:pb-40"
+                className="relative z-10 h-full flex flex-col justify-end items-start text-left px-6 md:px-12 pb-24 md:pb-40"
             >
 
                 {/* Subheading / Tagline */}

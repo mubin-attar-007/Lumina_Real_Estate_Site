@@ -22,7 +22,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
           <img
             src={project.imageUrl}
             alt={project.title}
-            className="w-full h-full object-cover transition-transform duration-1000 ease-[0.22,1,0.36,1] group-hover:scale-105"
+            className="w-full h-full object-cover transition-all duration-700 ease-[0.22,1,0.36,1] group-hover:scale-105 filter grayscale group-hover:grayscale-0"
             loading="lazy"
           />
           <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors duration-500"></div>

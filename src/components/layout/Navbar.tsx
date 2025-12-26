@@ -151,7 +151,7 @@ const Navbar: React.FC = () => {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "tween", ease: [0.22, 1, 0.36, 1], duration: 0.6 }}
-              className="fixed inset-0 z-[999] bg-white flex overflow-hidden"
+              className="fixed inset-0 z-[999] bg-white flex h-[100dvh]"
             >
               {/* LEFT COLUMN: 70% Width - CEO / Founder Image (Builder Context) */}
               <div className="hidden lg:block w-[70%] h-full relative overflow-hidden bg-gray-100">
@@ -173,34 +173,34 @@ const Navbar: React.FC = () => {
               </div>
 
               {/* RIGHT COLUMN: 30% Width - Menu Links */}
-              <div className="w-full lg:w-[30%] h-full flex flex-col p-12 lg:p-16 relative bg-white">
+              <div className="w-full lg:w-[30%] h-full bg-white flex flex-col overflow-y-auto px-8 py-10 md:p-16 scrollbar-hide">
 
-                {/* Close Button (Top Right) */}
-                <div className="flex justify-end mb-12">
+                {/* Close Button */}
+                <div className="flex justify-end mb-6 shrink-0">
                   <button
                     onClick={() => setIsOpen(false)}
-                    className="group flex items-center gap-3 text-brand-900 focus:outline-none"
+                    className="group flex items-center gap-3 text-brand-900 focus:outline-none bg-white/50 backdrop-blur-md px-4 py-2 rounded-full border border-gray-100/50 shadow-sm"
                   >
-                    <span className="text-xs font-bold uppercase tracking-widest group-hover:text-gold-600 transition-colors">Close</span>
-                    <div className="relative w-8 h-8 rounded-full border border-gray-200 flex items-center justify-center group-hover:border-gold-500 transition-colors">
-                      <X size={14} className="group-hover:rotate-90 transition-transform duration-300" />
+                    <span className="text-[10px] font-bold uppercase tracking-widest group-hover:text-gold-600 transition-colors">Close</span>
+                    <div className="relative w-6 h-6 rounded-full border border-gray-200 flex items-center justify-center group-hover:border-gold-500 transition-colors">
+                      <X size={12} className="group-hover:rotate-90 transition-transform duration-300" />
                     </div>
                   </button>
                 </div>
 
                 {/* Links List */}
-                <nav className="flex flex-col space-y-5 flex-grow justify-center">
+                <nav className="flex flex-col space-y-4 md:space-y-6 justify-center min-h-min py-8 grow">
                   {drawerLinks.map((link, idx) => (
                     <motion.div
                       key={link.path}
                       initial={{ opacity: 0, x: 20 }}
                       animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.3 + (idx * 0.05) }}
+                      transition={{ delay: 0.1 + (idx * 0.05) }}
                     >
                       <Link
                         to={link.path}
                         onClick={() => setIsOpen(false)}
-                        className="text-3xl lg:text-4xl font-serif font-medium text-brand-900 hover:text-gold-600 transition-colors block"
+                        className="text-3xl md:text-3xl lg:text-4xl font-serif font-medium text-brand-900 hover:text-gold-600 transition-colors block leading-tight"
                       >
                         {link.label}
                       </Link>
@@ -212,8 +212,8 @@ const Navbar: React.FC = () => {
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  transition={{ delay: 0.6 }}
-                  className="mt-8 pt-8 border-t border-gray-100"
+                  transition={{ delay: 0.4 }}
+                  className="mt-8 pt-8 border-t border-gray-100 pb-8 shrink-0"
                 >
                   <PremiumButton onClick={() => { openEnquire(); setIsOpen(false); }} className="w-full justify-center mb-8">
                     Partner With Us
@@ -227,7 +227,6 @@ const Navbar: React.FC = () => {
                     <span className="text-[10px] font-bold uppercase tracking-widest">© 2025</span>
                   </div>
                 </motion.div>
-
               </div>
             </motion.div>
           )}

@@ -4,7 +4,7 @@ import ScrollReveal from '@/components/common/ScrollReveal';
 
 const StatsSection: React.FC = () => {
     return (
-        <section className="py-32 bg-brand-950 relative overflow-hidden group">
+        <section className="py-20 md:py-32 bg-brand-950 relative overflow-hidden group">
             {/* Dark Background Image - Enhanced Visibility & Interaction */}
             <div className="absolute inset-0 z-0">
                 <img
@@ -13,7 +13,8 @@ const StatsSection: React.FC = () => {
                     loading="lazy"
                     className="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-all duration-1000 filter grayscale group-hover:grayscale-0"
                 />
-                <div className="absolute inset-0 bg-gradient-to-b from-brand-950/90 via-brand-950/70 to-brand-950/90 group-hover:via-brand-950/50 transition-all duration-1000"></div>
+                <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-500 z-[1]"></div>
+                <div className="absolute inset-0 bg-gradient-to-b from-brand-950 via-brand-950/80 to-brand-950 z-[2]"></div>
             </div>
 
             {/* Large Background Text */}
